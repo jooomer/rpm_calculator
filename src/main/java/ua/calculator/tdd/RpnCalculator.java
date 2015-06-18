@@ -27,33 +27,35 @@ public class RpnCalculator {
 		return values;
 	}
 
-	public void add() {
-		BigDecimal rhs = values.peek();
-		this.drop();
-		BigDecimal lhs = values.peek();
-		BigDecimal result = rhs.add(lhs);
-		values.replaceTop(result);
+	private void add() {
+		new Add().execute(values);
 	}
 
 	public void subtract() {
-		BigDecimal rhs = values.peek();
-		this.drop();
-		BigDecimal lhs = values.peek();
-		BigDecimal result = lhs.subtract(rhs);
-		values.replaceTop(result);
+		new Subtract().execute(values);
+	}
+ 
+	private void factorial() {
+		new Factorial().execute(values);
 	}
 
-	public void factorial() {
-		BigDecimal operand = values.peek();
-		BigDecimal result = BigDecimal.ONE;
-		
-		while (operand.compareTo(BigDecimal.ONE) > 0) {
-			result = result.multiply(operand);
-			operand = operand.subtract(BigDecimal.ONE);
+	public void execute(String operatorName) {
+		MathOperator operator = findOperatorNamed(operatorName);
+		operator.execute(values);
+	}
+
+	private MathOperator findOperatorNamed(String operatorName) {
+		if (operatorName.equals("+")) {
+			return new Add();
+		} else if (operatorName.equals("-")) {
+			return new Subtract();
+		} else if (operatorName.equals("!")) {
+			return new Factorial();
+		} else if (operatorName.equals("*")) {
+			return new Multiply();
+		} else {
+			throw new NoSuchOperatorException();
 		}
-		
-		values.replaceTop(result);
-		
 	}	
 	
 	

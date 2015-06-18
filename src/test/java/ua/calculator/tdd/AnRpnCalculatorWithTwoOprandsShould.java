@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.sun.accessibility.internal.resources.accessibility;
+
 public class AnRpnCalculatorWithTwoOprandsShould {
 	
 	private RpnCalculator calculator;
@@ -20,15 +22,20 @@ public class AnRpnCalculatorWithTwoOprandsShould {
 	}
 	
 	@Test
-	public void AddTwoNumbersCorrectly() {
-		calculator.add();
+	public void addTwoNumbersCorrectly() {
+		calculator.execute("+");
 		assertEquals(new BigDecimal(7), calculator.getAccumulator());
 	}
 
 	@Test
-	public void SubtractTwoNumbersCorrectly() {
-		calculator.subtract();
+	public void subtractTwoNumbersCorrectly() {
+		calculator.execute("-");
 		assertEquals(new BigDecimal(-1), calculator.getAccumulator());
 	}
 
+	@Test
+	public void multiplyTwoNumbersCorrectly() {
+		calculator.execute("*");
+		assertEquals(new BigDecimal(12), calculator.getAccumulator());
+	}
 }
