@@ -22,19 +22,25 @@ public class AnRpnCalculatorWithTwoOprandsShould {
 	}
 	
 	@Test
-	public void addTwoNumbersCorrectly() {
+	public void executeAddTwoNumbersCorrectly() {
 		calculator.execute("+");
 		assertEquals(new BigDecimal(7), calculator.getAccumulator());
 	}
 
 	@Test
-	public void subtractTwoNumbersCorrectly() {
+	public void executeSubtractTwoNumbersCorrectly() {
 		calculator.execute("-");
 		assertEquals(new BigDecimal(-1), calculator.getAccumulator());
 	}
 
 	@Test
-	public void multiplyTwoNumbersCorrectly() {
+	public void executeFactorialCorrectly() {
+		calculator.execute("!");
+		assertEquals(new BigDecimal(24), calculator.getAccumulator());
+	}
+
+	@Test
+	public void executeMultiplyTwoNumbersCorrectly() {
 		calculator.execute("*");
 		assertEquals(new BigDecimal(12), calculator.getAccumulator());
 	}
