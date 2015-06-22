@@ -45,17 +45,7 @@ public class RpnCalculator {
 	}
 
 	private MathOperator findOperatorNamed(String operatorName) {
-		if (operatorName.equals("+")) {
-			return new Add();
-		} else if (operatorName.equals("-")) {
-			return new Subtract();
-		} else if (operatorName.equals("!")) {
-			return new Factorial();
-		} else if (operatorName.equals("*")) {
-			return new Multiply();
-		} else {
-			throw new NoSuchOperatorException();
-		}
+		return new MathOperatorFactory().findOperatorNamed(operatorName);
 	}	
 	
 	
