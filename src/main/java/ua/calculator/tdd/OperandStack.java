@@ -15,7 +15,7 @@ public class OperandStack {
 			return BigDecimal.ZERO;
 		}
 	}
-
+ 
 	public void replaceTop(BigDecimal value) {
 		this.pop();
 		values.push(value);
